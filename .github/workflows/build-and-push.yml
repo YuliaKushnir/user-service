@@ -7,7 +7,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  DEPLOY_REPO: ${{ github.repository_owner }}/cloud-deployment
+  IMAGE_NAME: user-service
+  DEPLOY_REPO: ${{ github.repository_owner }}/cloud-deployment-is-order
 
 jobs:
   build:
