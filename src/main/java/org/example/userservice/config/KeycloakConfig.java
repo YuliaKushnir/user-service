@@ -21,7 +21,7 @@ public class KeycloakConfig {
     public Keycloak keycloak(KeycloakProps props) {
         return KeycloakBuilder.builder()
                 .serverUrl(props.getServerUrl())
-                .realm("master")
+                .realm("cloud-realm")
                 .clientId(props.getClientId())
                 .username(props.getUsername())
                 .password(props.getPassword())
