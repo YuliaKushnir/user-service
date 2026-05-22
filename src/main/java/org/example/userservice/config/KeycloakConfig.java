@@ -21,7 +21,7 @@ public class KeycloakConfig {
     public Keycloak keycloak(KeycloakProps props) {
         return KeycloakBuilder.builder()
                 .serverUrl(props.getServerUrl())
-                .realm("cloud-realm")
+                .realm("garment_print")
                 .clientId(props.getClientId())
                 .username(props.getUsername())
                 .password(props.getPassword())

@@ -25,28 +25,17 @@ public class KeycloakAdminService {
     public void assignRole(String userId, Role role) {
         String roleName = "ROLE_" + role.name();
 
-//        String clientUuid = keycloak.realm(props.getRealm())
-//                .clients()
-//                .findByClientId(props.getTargetClientId())
-//                .get(0)
-//                .getId();
+        String clientUuid = keycloak.realm(props.getRealm())
+                .clients()
+                .findByClientId(props.getTargetClientId())
+                .get(0)
+                .getId();
 
-//        ClientResource clientResource = keycloak.realm(props.getRealm())
-//                .clients()
-//                .get(clientUuid);
+        ClientResource clientResource = keycloak.realm(props.getRealm())
+                .clients()
+                .get(clientUuid);
 
-//        RoleRepresentation roleRepresentation = clientResource.roles()
-//                .get(roleName)
-//                .toRepresentation();
-//
-//        keycloak.realm(props.getRealm())
-//                .users()
-//                .get(userId)
-//                .roles()
-//                .clientLevel(clientUuid)
-//                .add(List.of(roleRepresentation));
-        RoleRepresentation roleRepresentation = keycloak.realm(props.getRealm())
-                .roles()
+        RoleRepresentation roleRepresentation = clientResource.roles()
                 .get(roleName)
                 .toRepresentation();
 
@@ -54,8 +43,19 @@ public class KeycloakAdminService {
                 .users()
                 .get(userId)
                 .roles()
-                .realmLevel()
+                .clientLevel(clientUuid)
                 .add(List.of(roleRepresentation));
+//        RoleRepresentation roleRepresentation = keycloak.realm(props.getRealm())
+//                .roles()
+//                .get(roleName)
+//                .toRepresentation();
+//
+//        keycloak.realm(props.getRealm())
+//                .users()
+//                .get(userId)
+//                .roles()
+//                .realmLevel()
+//                .add(List.of(roleRepresentation));
     }
 
     public void removeAllClientRoles(String userId) {
