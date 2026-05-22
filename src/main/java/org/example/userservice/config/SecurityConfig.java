@@ -24,31 +24,32 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                                .anyRequest().permitAll()
 
-                        .requestMatchers("/api/users/register").permitAll()
-                        .requestMatchers("/api/users/*/validate").permitAll()
-
-                        .requestMatchers(HttpMethod.GET, "/api/users/**")
-                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
-
-                        .requestMatchers(HttpMethod.GET, "/api/users/role/**")
-                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN")
-
-                        .requestMatchers(HttpMethod.GET, "/api/users/managers/emails")
-                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
-
-                        .requestMatchers(HttpMethod.PUT, "/api/users/*/personal-data")
-                        .authenticated()
-
-                        .requestMatchers(HttpMethod.PUT, "/api/users/*/role")
-                        .hasAuthority("ROLE_ADMIN")
-
-                        .requestMatchers(HttpMethod.DELETE, "/api/users/**")
-                        .hasAuthority("ROLE_ADMIN")
-
-                        .requestMatchers("/actuator/**").permitAll()
-
-                        .anyRequest().authenticated()
+//                        .requestMatchers("/api/users/register").permitAll()
+//                        .requestMatchers("/api/users/*/validate").permitAll()
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/users/**")
+//                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/users/role/**")
+//                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN")
+//
+//                        .requestMatchers(HttpMethod.GET, "/api/users/managers/emails")
+//                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
+//
+//                        .requestMatchers(HttpMethod.PUT, "/api/users/*/personal-data")
+//                        .authenticated()
+//
+//                        .requestMatchers(HttpMethod.PUT, "/api/users/*/role")
+//                        .hasAuthority("ROLE_ADMIN")
+//
+//                        .requestMatchers(HttpMethod.DELETE, "/api/users/**")
+//                        .hasAuthority("ROLE_ADMIN")
+//
+//                        .requestMatchers("/actuator/**").permitAll()
+//
+//                        .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 ->
                         oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))

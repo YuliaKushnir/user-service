@@ -45,17 +45,7 @@ public class KeycloakAdminService {
                 .roles()
                 .clientLevel(clientUuid)
                 .add(List.of(roleRepresentation));
-//        RoleRepresentation roleRepresentation = keycloak.realm(props.getRealm())
-//                .roles()
-//                .get(roleName)
-//                .toRepresentation();
-//
-//        keycloak.realm(props.getRealm())
-//                .users()
-//                .get(userId)
-//                .roles()
-//                .realmLevel()
-//                .add(List.of(roleRepresentation));
+
     }
 
     public void removeAllClientRoles(String userId) {
