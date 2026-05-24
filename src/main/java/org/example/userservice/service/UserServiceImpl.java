@@ -108,6 +108,7 @@ public class UserServiceImpl implements UserService {
         userPersonalData.setEmail(user.getEmail());
         userPersonalData.setTelephone(user.getTelephone());
         userPersonalData.setCompany(user.getCompany());
+        userPersonalData.setAddress(user.getAddress());
         userPersonalData.setRole(user.getRole());
 
         return userPersonalData;

@@ -16,5 +16,6 @@ public class UserPersonalData {
     private String email;
     private String telephone;
     private String company;
+    private String address;
     private Role role;
 }
