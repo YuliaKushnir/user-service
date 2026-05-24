@@ -41,7 +41,7 @@ public class SecurityConfig {
                         .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
 
                         .requestMatchers(HttpMethod.GET, "/api/users/managers/emails")
-                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
+                        .hasAnyAuthority("ROLE_CLIENT", "ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
 
                         .requestMatchers(HttpMethod.PUT, "/api/users/*/personal-data")
                         .authenticated()
