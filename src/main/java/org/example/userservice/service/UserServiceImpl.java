@@ -152,8 +152,8 @@ public class UserServiceImpl implements UserService {
     // update role by admin
     @Override
     public UserPersonalData updateRole(String keycloakId, Role role) {
-        keycloakAdminService.removeAllClientRoles(keycloakId);
-        keycloakAdminService.assignRole(keycloakId, role);
+//        keycloakAdminService.removeAllClientRoles(keycloakId);
+//        keycloakAdminService.assignRole(keycloakId, role);
 
         User user = repository.getUserByKeycloakId(keycloakId).orElseThrow();
         user.setRole(role);
