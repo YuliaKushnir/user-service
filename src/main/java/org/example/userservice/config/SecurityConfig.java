@@ -29,21 +29,20 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-//                                .anyRequest().permitAll()
 
                         .requestMatchers("/api/users/register").permitAll()
                         .requestMatchers("/api/users/*/validate").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/api/users/**")
-                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
-
-                        .requestMatchers(HttpMethod.GET, "/api/users/role/**")
-                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
+//                        .requestMatchers(HttpMethod.GET, "/api/users/role/**")
+//                        .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
 
                         .requestMatchers(HttpMethod.GET, "/api/users/managers/emails")
                         .hasAnyAuthority("ROLE_CLIENT", "ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
 
-                        .requestMatchers(HttpMethod.PUT, "/api/users/*/personal-data")
+                                .requestMatchers(HttpMethod.GET, "/api/users/**")
+                                .hasAnyAuthority("ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN")
+
+                                .requestMatchers(HttpMethod.PUT, "/api/users/*/personal-data")
                         .authenticated()
 
                         .requestMatchers(HttpMethod.PUT, "/api/users/*/role")
